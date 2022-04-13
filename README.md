@@ -77,6 +77,9 @@ git config --local http.sslVerify "false"
 git config --global http.proxy http://127.0.0.1:8080
 git config --global https.proxy http://127.0.0.1:8080
 
+取消
+git config --global --unset http.proxy
+
 参考：https://blog.csdn.net/loulansd/article/details/121844302
 
 # 更多可以参考
