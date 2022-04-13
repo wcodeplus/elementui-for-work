@@ -16,31 +16,23 @@
 
 ### 项目运行
 
-1. 安装依赖
+1. 说明
+
+本项目要求node版本8.17.0
+
+可以用nvm来管理node版本
+
+2. 安装
 
 ```
+# 安装依赖
 npm install
-```
 
-2. 本地运行
-
-```
+# 本地运行
 npm run serve
-```
 
-3. 编译打包
-
-```
+# 编译打包
 npm run build
-```
-
-4. 或者用yarn
-
-```
-#切换腾讯源安装yarn
-npm install yarn --registry http://mirrors.tencent.com/npm/
-
-yarn ...
 ```
 
 <br/>

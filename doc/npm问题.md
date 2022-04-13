@@ -111,9 +111,18 @@ npm_mirror:npmmirror.com/mirrors/npm/
 备注：npm中国镜像地址 https://npmmirror.com/
 
 再用nvm安装node
+
+安装前先去查看一下长期支持的有哪些 
+
+https://nodejs.org/zh-cn/download/releases/
+
+备注：奇数版本的不会维护，选择偶数版本的
+
 nvm install 14.16.1
 
-安装完后，要use一下，不然不可用
+
+安装完后，要注意看看npm是否同时安装好，之后use一下，不然不可用
+nvm list
 nvm use 14.16.1
 
 6. 在用node来处理其他问题
