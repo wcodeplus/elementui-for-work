@@ -10,8 +10,18 @@ Mock.mock('/api/login', 'post', (option) => {
 
 // 用户数据
 const userData = () => {
-  let users = []
-  for (let i = 0; i < 10; i++) {
+  // let users = []
+  let data = {
+    code: "1",
+    message: "用户数据获取成功！",
+    pagination: {
+      total: 105,
+      size: 10,
+      current: 1
+    },
+    users: [],
+  }
+  for (let i = 0; i < 105; i++) {
     let user = {
       'id': i + 1,
       'date': Random.date('yyyy-MM-dd'),
@@ -20,9 +30,9 @@ const userData = () => {
       'phone': Mock.mock(/^1[0-9]{10}$/),
       'status': Random.integer(0, 1)
     }
-    users.push(user)
+    data.users.push(user)
   }
-  return users
+  return data
 }
 Mock.mock('/api/users', userData)
 
