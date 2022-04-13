@@ -71,3 +71,20 @@ git config --global http.sslVerify "false"
 # 更多可以参考
 http://i.lckiss.com/?p=7397
 ```
+
+```bash
+PS D:\wcode\elementui-for-work> git config --local --list
+core.repositoryformatversion=0
+core.filemode=false
+core.bare=false
+core.logallrefupdates=true
+core.symlinks=false
+core.ignorecase=true
+remote.origin.url=https://github.com/wcodeplus/elementui-for-work.git
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+user.name=wcodeplus
+user.email=wcodeplus@wcodeplus@163.com
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+PS D:\wcode\elementui-for-work> git config --local http.sslVersity "false"
+```
