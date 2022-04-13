@@ -65,12 +65,17 @@ git branch -M main
 git remote add origin https://github.com/wcodeplus/elementui-for-work.git
 git push -u origin main
 
-# 出现10054错误
+# 出现10054问题
 先查看local下的list是否有http.sslVerify
 git config --local --list
 
 没有的话，就添加一下（添加到local，不然无效）
 git config --local http.sslVerify "false"
+
+# 出现443问题
+
+git config --global http.proxy http://127.0.0.1:8080
+git config --global https.proxy http://127.0.0.1:8080
 
 参考：https://blog.csdn.net/loulansd/article/details/121844302
 
