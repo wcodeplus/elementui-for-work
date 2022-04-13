@@ -1,5 +1,7 @@
-## npm问题解决方案
+## npm相关问题
 
+本文档待整理：2022年4月13日22:43:47
+--------------
 
 > cnpm是不会读取package-lock.json这个文件的，也不会生成package-lock.json这个文件，所以，cnpm是不支持依赖版本锁定的
 
@@ -14,6 +16,7 @@ npx
 
 yarn
 
+## 几个问题
 
 问题一：资源文件是从哪里下载的？
 npm config ls
@@ -75,6 +78,7 @@ npm cache clean --force
 
 问题三：.npmrc .yarnrc 等文件配置（几级？ -g  -D 等）
 
+## 完整使用
 
 1. 查看npm当前registry
 npm confis ls
@@ -95,28 +99,25 @@ npmMirror - 1698ms
 4. 切换组要的registry
 nrm use npm
 
-5. 使用npx切换node版本安装node_modules
-npx -p node@6 npm install
+5. 使用nvm来管理node版本
 
-这时候会提示是否需要使用node6来安装，选y
-Need to install the following packages:
-  node@6
-Ok to proceed? (y) y
-
-
-
-
-
-The package-lock.json file was created with an old version of npm,
-so supplemental metadata must be fetched from the registry.
-
-
-https://npmmirror.com/
-https://mirrors.cloud.tencent.com/
-
-
-
-
-nvm
+先卸载已经下载和安装的node，然后下载nvm安装
 https://github.com/coreybutler/nvm-windows/releases
-C:\Users\Administrator\AppData\Roaming\nvm
+
+安装好后，修改nvm安装目录下的settings.txt，添加
+node_mirror:npmmirror.com/mirrors/node/
+npm_mirror:npmmirror.com/mirrors/npm/
+
+备注：npm中国镜像地址 https://npmmirror.com/
+
+再用nvm安装node
+nvm install 14.16.1
+
+安装完后，要use一下，不然不可用
+nvm use 14.16.1
+
+6. 在用node来处理其他问题
+
+> 报错：The package-lock.json file was created with an old version of npm,so supplemental metadata must be fetched from the registry.
+> 处理：node版本问题，本项目切换到14.16.1就可以。
+

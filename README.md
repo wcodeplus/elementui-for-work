@@ -34,6 +34,15 @@ npm run serve
 npm run build
 ```
 
+4. 或者用yarn
+
+```
+#切换腾讯源安装yarn
+npm install yarn --registry http://mirrors.tencent.com/npm/
+
+yarn ...
+```
+
 <br/>
 
 ### git多用户
