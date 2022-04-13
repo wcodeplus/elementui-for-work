@@ -72,6 +72,8 @@ git config --local --list
 没有的话，就添加一下（添加到local，不然无效）
 git config --local http.sslVerify "false"
 
+参考：https://blog.csdn.net/loulansd/article/details/121844302
+
 # 更多可以参考
 http://i.lckiss.com/?p=7397
 ```
