@@ -22,6 +22,26 @@
 
 可以用nvm来管理node版本
 
+[nvm下载地址](https://nodejs.org/zh-cn/download/releases/)
+
+安装好后，修改nvm安装目录下的settings.txt，添加
+
+```
+node_mirror:npmmirror.com/mirrors/node/
+npm_mirror:npmmirror.com/mirrors/npm/
+```
+
+再用nvm来安装node
+
+```
+nvm install 8.17.0
+nvm list
+nvm use 8.17.0
+node -v
+npm -v
+```
+
+
 2. 安装
 
 ```
