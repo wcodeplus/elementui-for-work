@@ -70,3 +70,20 @@ git config --local --list
 
 [参考地址](http://i.lckiss.com/?p=7397)
 
+## git 10054和443问题
+
+**10054问题**（注意：看自己的项目是local还是global）
+
+```
+git config --local http.sslBackend "openssl"
+git config --local https.sslBackend "openssl"
+git config --local http.sslVerify "openssl"
+git config --local https.sslVerify "openssl"
+
+git config --local --unset http.proxy
+git config --local --unset https.proxy
+```
+
+**443问题**
+
+多提交几次，不行就换加速器或者用手机热点提交
