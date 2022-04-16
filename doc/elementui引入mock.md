@@ -113,7 +113,7 @@ Mock.mock(url, type, data)
 }
 ```
 
-### 3.具体实现
+### 3.实际操作
 
 接口编写 + 接口引用
 
@@ -122,9 +122,9 @@ Mock.mock(url, type, data)
 例如：用户接口 `/mock/userDataApi.js`
 
 ```js
-import Mock from 'mockjs'
+import Mock from 'mockjs';
 
-const Random = Mock.Random
+const Random = Mock.Random;
 
 const userData = () => {
   let data = {
@@ -136,7 +136,7 @@ const userData = () => {
       current: 1
     },
     dataLists: [],
-  }
+  };
   for (let i = 0; i < 105; i++) {
     let user = {
       'id': i + 1,
@@ -145,12 +145,12 @@ const userData = () => {
       'address': Mock.mock('@county(true)'),
       'phone': Mock.mock(/^1[0-9]{10}$/),
       'status': Random.integer(0, 1)
-    }
-    data.users.push(user)
-  }
-  return data
+    };
+    data.users.push(user);
+  };
+  return data;
 }
-Mock.mock('/api/users', userData)
+Mock.mock('/api/users', userData);
 ```
 
 #### (2)接口引用
