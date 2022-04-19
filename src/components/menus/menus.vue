@@ -13,11 +13,11 @@
     </el-menu-item>
     <el-menu-item index="/users">
       <i class="el-icon-menu"></i>
-      <span slot="title">table和dialog</span>
+      <span slot="title">ElementUI</span>
     </el-menu-item>
     <el-menu-item index="/articles">
       <i class="el-icon-document"></i>
-      <span slot="title">文章</span>
+      <span slot="title">banksteel-ui</span>
     </el-menu-item>
     <el-submenu index="4">
       <template slot="title">
