@@ -14,7 +14,7 @@
                 （1）mock语法参考doc/mock语法.md<br>
                 （2）获取的数据是一个数组
               </el-tab-pane>
-              <el-tab-pane label="分页" name="second">
+              <el-tab-pane label="table分页" name="second">
                 1. 要点<br>
                 （1）el-table设置:data<br>
                 （2）el-pagination设置:current-page(后端返回的当前页)、:page-sizes(每页多少条选项)、:page-size(后端返回的每页多少条)和:total(后端返回的总条数)<br>
@@ -27,13 +27,42 @@
                 （4）切换每页条数@size-change和点击页码@current-change <br>
                 注意：也可以像本页面那样，将数据直接赋值<br>
               </el-tab-pane>
-              <el-tab-pane label="跨页选择" name="third">
+              <el-tab-pane label="table跨页选择" name="third">
                 1. 要点<br>
                 （1）el-table设置一个变化的row-key<br>
                 （2）第一个el-table-column（type="selection"的那个）设置:reserve-selection="true"<br>
                 2. 跨页取值<br>
                 （1）由@selection-change获取选取行<br>
                 （2）获取的数据是一个数组
+              </el-tab-pane>
+              <el-tab-pane label="dialog" name="fourth">
+                养成好习惯：所有form表单或者table都要规范化编写，该有ref、model、rules、item porp的都别少 <br>
+                ============ <br>
+                1. 要点<br>
+                （1）显示和隐藏：设置:visible.sync的布尔取值，有四种隐藏方式（点击框外、按ESC、点击右上角x，点击确定/取消）<br>
+                （2）缓存问题（数据缓存、验证缓存）<br>
+                2. 显示隐藏<br>
+                （1）方式：改变:visible.sync的布尔取值<br>
+                （2）操作：<br>
+                 ①点击框外：可以通过设置close-on-click-modal属性设定是否可以点击框外隐藏<br>
+                 ②点击右上角x：可以通过show-close设置是都显示那个x<br>
+                 ③按ESC：可以通过close-on-press-escape设置<br>
+                 ④点击取消/确定按钮：@click<br>
+                （3）最优解<br>
+                 ①绑定before-close属性：before-close 仅当用户通过点击关闭图标或遮罩关闭 Dialog 时起效。<br>
+                 ②绑定@close方法：四种关闭方式都可以监听，所以@close为最优解！！<br>
+                 ③同@close的还有@open方法，可以监听弹窗的打开 <br>
+                3. 缓存问题<br>
+                （1）数据缓存：在关闭时用@close监听<br>
+                ①清空：<br>
+                ②还原（如编辑页面，还原后还有原数据）：this.$refs[formName].resetFields()，<br>
+                要使用这个方法得满足四个条件（定义 ref 属性、绑定 model、 FormItem 中有 prop 属性、model 中绑定的属性与 prop 中相同）<br>
+                如果要用这个方法做数据清空，需要使用this.$nextTick，具体的请查看doc/Vue.$nextTick问题.md
+                （2）验证缓存：dialog消失的时候（不管是哪种消失，统一用 @close 接管）<br>
+                （3）最佳实践：全部用还原来做 <br>
+                ①编辑中退出 - 还原：this.$refs[formName].resetFields()<br>
+                ②新增中退出 - 清空：this.$nextTick(()=>{ formName.xxx = "" ...})<br>
+                ③搜索后重置 - 清空/还原(有时候搜索项会有默认值)：this.$nextTick(()=>{ formName.xxx = "" ...}) / this.$refs[formName].resetFields()<br>
               </el-tab-pane>
             </el-tabs>
         </el-card>
@@ -171,6 +200,7 @@
         this.rowIndex = index;
       },
       submitUser(formName) {
+        console.log("aaaa");
         // 表单验证
         this.$refs[formName].validate((valid) => {
           if (valid) {
@@ -181,6 +211,7 @@
             } else {
               // id为空-新增
               this.user.id = this.users.length + 1;
+              console.log(this.user);
               this.users.unshift(this.user);
             }
             this.userFormVisible = false;
@@ -209,6 +240,7 @@
           });
       },
       resetForm(formName) {
+        // console.log("close监听");
         this.$refs[formName].clearValidate();
       },
       mulDelete() {

@@ -13,7 +13,7 @@
     </el-menu-item>
     <el-menu-item index="/users">
       <i class="el-icon-menu"></i>
-      <span slot="title">用户</span>
+      <span slot="title">table和dialog</span>
     </el-menu-item>
     <el-menu-item index="/articles">
       <i class="el-icon-document"></i>

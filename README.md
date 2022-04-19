@@ -61,7 +61,7 @@ npm run build
 
 进入本项目后，设置单独的local级git账户
 
-```bash
+```
 cd /elementui-for-work/
 
 # 查看本项目是否有local账户
