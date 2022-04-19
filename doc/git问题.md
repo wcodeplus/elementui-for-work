@@ -87,3 +87,15 @@ git config --local --unset https.proxy
 **443问题**
 
 多提交几次，不行就换加速器或者用手机热点提交
+
+## 本地未pull就开始写了
+
+https://www.dovov.com/git-pull-rebasegit-pull-ff-only.html
+
+远程： A-B-C
+本地： A-B-D
+
+在本地 pull --rebase 后
+本地变成了  A-B-C-D
+远程还是 A-B-C
+再push上远程
