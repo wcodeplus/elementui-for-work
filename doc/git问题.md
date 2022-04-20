@@ -99,3 +99,19 @@ https://www.dovov.com/git-pull-rebasegit-pull-ff-only.html
 本地变成了  A-B-C-D
 远程还是 A-B-C
 再push上远程
+
+## git远程删除了一些分支本地要同步
+
+本地
+```
+# 本地分支
+git branch
+
+# 远程分支
+git branch -r 
+
+# 获取远程分支列表新数据
+git pull -p
+
+
+```
