@@ -7,6 +7,7 @@ import Articles from './views/Articles.vue'
 import Echarts from './views/Echarts.vue'
 import Login from './views/Login.vue'
 import NotFound from './views/NotFound.vue'
+import Vuex from './views/Vuex.vue'
 
 Vue.use(Router)
 
@@ -45,6 +46,11 @@ const router = new Router({
         {
           path: '/404',
           component: NotFound
+        },
+        {
+          path: '/vuex',
+          name: 'vuex',
+          component: Vuex
         }
       ]
     },

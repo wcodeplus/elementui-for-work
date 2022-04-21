@@ -112,7 +112,6 @@
           <el-form-item prop="userName" label="数字输入">
             <el-input v-model="searchForm.userName"></el-input>
           </el-form-item>
-          </el-form-item>
         </el-col>
         <el-col :span="6" :xs="6">
           <el-form-item prop="region" label="静态选框">
