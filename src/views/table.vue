@@ -137,14 +137,9 @@
         </el-col>
         <el-col :span="6" :xs="6">
           <el-form-item prop="dateTimeRange" label="双日期">
-            <el-date-picker
-                  v-model="searchForm.dateTimeRange"
-                  type="daterange"
-                  range-separator="至"
-                  start-placeholder="开始日期"
-                  end-placeholder="结束日期"
-                  style="width: 100%;">
-                </el-date-picker>
+            <el-date-picker v-model="searchForm.dateTimeRange" type="daterange" range-separator="至"
+              start-placeholder="开始日期" end-placeholder="结束日期" style="width: 100%;">
+            </el-date-picker>
           </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
@@ -279,11 +274,7 @@
     methods: {
       getUsers() {
         this.loading = true;
-        const params = {
-          name: "jack",
-          age: 15
-        };
-        this.$http("/api/users",{params})
+        this.$http("/api/table")
           .then((res) => {
             if (res.data.code === "1") {
               this.userTable = res.data.users;
@@ -303,7 +294,6 @@
         this.rowIndex = index;
       },
       submitUser(formName) {
-        console.log("aaaa");
         // 表单验证
         this.$refs[formName].validate((valid) => {
           if (valid) {
@@ -395,17 +385,16 @@
         return row.id;
       },
       // 搜索查询
-      searchHandle() {
-      },
+      searchHandle() {},
       // 搜索重置
       searchReset() {
         this.$refs["search_form"].resetFields();
         this.getUsers();
       },
       // 导入数据
-      importHandle(){},
+      importHandle() {},
       // 导出表格
-      exportHandle(){},
+      exportHandle() {},
     },
   };
 </script>
@@ -422,11 +411,17 @@
     .el-pagination {
       margin-top: 20px;
     }
-  };
+  }
+
+  ;
+
   .search-form el-col {
     margin-bottom: 30px;
-  };
-  .el-form-item{
+  }
+
+  ;
+
+  .el-form-item {
     height: 45px;
   }
 </style>

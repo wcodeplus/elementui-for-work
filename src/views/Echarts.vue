@@ -6,7 +6,7 @@
 
 <script>
 import echarts from 'echarts'
-import option from './../common/option'
+import option from './../../common/option'
 export default {
   mounted () {
     this.drawEcharts()

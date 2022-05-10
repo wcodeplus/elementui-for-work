@@ -34,7 +34,7 @@ const userData = () => {
   }
   return data
 }
-Mock.mock('/api/users', userData)
+Mock.mock('/api/table', userData)
 
 // 文章数据
 const articleData = () => {

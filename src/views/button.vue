@@ -1,6 +1,6 @@
 <template>
   <div class="console">
-    这是 console 页面
+    这是 PublicButton 页面
   </div>
 </template>
 

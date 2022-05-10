@@ -46,7 +46,7 @@ npm -v
 
 ```
 # 安装依赖
-npm install
+cnpm install
 
 # 本地运行
 npm run serve
