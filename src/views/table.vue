@@ -100,6 +100,18 @@
               （4）<br>
               注意：<br>
             </el-tab-pane>
+            <el-tab-pane label="验证器" name="eighth">
+              1. 要点<br>
+              （1）form表单：form上要有 :model / ref / :rules， form-item 要有对应的 prop <br>
+              （2）两个地方要验证：①输入的时候  ②提交的时候<br>
+              （3）一定要有 :mode，且 :model的值要和 form-item对应，不然验证器没用 <br>
+              2. 具体实现<br>
+              （1）form该写的要写<br>
+              （2）验证器可以拆分出去<br>
+              （3）输入验证 + 提交验证<br>
+              （4）另外的约束可以通过@input方法限定<br>
+              注意：<br>
+            </el-tab-pane>
           </el-tabs>
         </el-card>
       </el-col>
@@ -110,7 +122,7 @@
       <el-row :gutter="0">
         <el-col :span="6" :xs="6">
           <el-form-item prop="userName" label="数字输入">
-            <el-input v-model="searchForm.userName"></el-input>
+            <el-input v-model="searchForm.userName" @input="changeNumber($event)"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="6" :xs="6">
@@ -220,6 +232,8 @@
 </template>
 
 <script>
+import {checkAmountMin} from "@/validator/table/searchFormValidator";
+
   export default {
     data() {
       return {
@@ -265,20 +279,31 @@
         searchForm: {
 
         },
-        searchRules: {}
+        searchRules: {
+            userName: [{trigger: "blur", validator: checkAmountMin}],
+            region: [],
+            region2: [],
+            dateTime: [],
+        }
       };
     },
     mounted() {
       this.getUsers();
     },
     methods: {
+        // 不让输入中文
+        changeNumber(e) {
+          this.searchForm.userName = e.replace(/[\u4e00-\u9fa5]/g, "");
+        },
       getUsers() {
         this.loading = true;
         this.$http("/api/table")
           .then((res) => {
+
             if (res.data.code === "1") {
               this.userTable = res.data.users;
               this.userPagination = res.data.pagination;
+              console.log("获取表格数据：", this.userPagination);
             } else {
               this.$message.error(res.data.message);
             }
@@ -385,7 +410,13 @@
         return row.id;
       },
       // 搜索查询
-      searchHandle() {},
+      searchHandle() {
+          this.$refs["search_form"].validate(valid => {
+            if (valid) {
+              console.log("进入搜索");
+            }
+          });
+      },
       // 搜索重置
       searchReset() {
         this.$refs["search_form"].resetFields();

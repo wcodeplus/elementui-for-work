@@ -2,22 +2,13 @@
     <div class="app">
         <el-row>
             <el-col :span="24">
-                <el-switch v-model="value1" active-text="按月付费" inactive-text="按年付费">
-                </el-switch>
-            </el-col>
-            <el-col :span="24">
-                <el-switch v-model="value2" active-text="按月付费" inactive-text="按年付费">
-                </el-switch>
-            </el-col>
-            <el-col :span="24">
+                参考：https://blog.csdn.net/weixin_60382322/article/details/121998611   将 right的值调一下
                 <el-switch
-                    :width="60"
-                    :value="getTaskSubscribeState(val)"
-                    active-color="#3399FF"
-                    inactive-color="#CCCCCC"
-                    active-value="1"
-                    inactive-value="0"
-                    :class="{'switch-is-actived': getTaskSubscribeState(val) === '1'}">
+                    active-color="#53A73F"
+                    inactive-color="#999999"
+                    active-text="ON"
+                    inactive-text="OFF"
+                    >
                 </el-switch>
             </el-col>
         </el-row>
@@ -42,32 +33,41 @@ export default {
  }
 </script>
 
-<style lang="scss" scoped>
-    .app {
-        font-size: 30px;
-        text-align: center;
-        margin-top: 350px;
-    }
+<style>
+.app {
+    font-size: 30px;
+    text-align: center;
+    margin-top: 350px;
+}
 
-    .el-switch {
-        /deep/ .el-switch__core {
-            &::before {
-                content: '关闭';
-                color: #fff;
-                position: absolute;
-                transform: scale(0.85);
-                left: 20px;
-            }
-        }
-
-        &.switch-is-actived {
-            /deep/ .el-switch__core {
-                &::before {
-                    content: '开启';
-                    left: 10px;
-                    transform: scale(0.85);
-         }
-    }
-            }
-        }
+.el-switch__label * {
+  line-height: 1;
+  font-size: 12px;
+  display: inline-block;
+}
+.el-switch__label {
+  position: absolute;
+  display: none;
+  color: #fff !important;
+  font-size: 12px !important;
+}
+/*打开时文字位置设置*/
+.el-switch__label--right {
+  z-index: 1;
+  right: -6px;
+}
+/*关闭时文字位置设置*/
+.el-switch__label--left {
+  z-index: 1;
+  left: 20px;
+}
+/*显示文字*/
+.el-switch__label.is-active {
+  display: block;
+}
+/*开关宽度*/
+.el-switch .el-switch__core,
+.el-switch .el-switch__label {
+  width: 50px !important;
+}
 </style>
